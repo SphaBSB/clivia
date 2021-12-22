@@ -1,0 +1,188 @@
+<html>
+    <head>
+            <title>
+                Clivia online Shopping</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <link href="{{ url_for('static', filename='assets/img/favicon.jpg') }}"rel="apple-touch-icon">
+       
+      
+            <link href="{{ url_for('static', filename='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}"rel="stylesheet">
+    
+    
+    
+    
+    
+    
+    
+            <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='css/st.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='assets/css/style.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}"rel="stylesheet">
+            <link href="{{ url_for('static', filename='css/st.css') }}"rel="stylesheet">
+           
+
+            <!-- js -->
+            <script src="{{url_for('static',filename='js/jquery-3.3.1.js')}}"></script>
+            <script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+            
+            
+    </head>
+<body>
+        <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a style="font-size: 22px;"  href="index.html">Spiff-BSB </a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" style="font-size: 11px;" href="{{ url_for('home.homepage') }}">Home<span class="sr-only">(current)</span></a></li>
+          <li><a class="nav-link scrollto" href="#about" style="font-size: 11px;">About</a></li>
+          <li><a class="nav-link scrollto" style="font-size: 11px;" href="#services">Brand</a></li>
+          <li><a class="nav-link scrollto " style="font-size: 11px;" href="#portfolio">Gallery</a></li>
+          <li><a class="nav-link scrollto" style="font-size: 11px;" href="#team">Man</a></li>
+          <li><a style="font-size: 11px;" href="blog.html">Women</a></li>
+        
+          <li><a class="nav-link scrollto" style="font-size: 11px;" href="#about">About</a></li>
+         
+          <li class="dropdown"><a style="font-size: 11px;" href="#"><span>Contact  us</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Facebook </a></li>
+              <li><a href="#">Instagram </a></li>
+              <li><a href="#">Twitter </a></li>
+              <li><a href="#">SnapChat </a></li> 
+              <li><a href="#">Email </a></li>
+              <li><a href="#">Telegram </a></li>
+              <li><a href="#">BSB-Developers </a></li>
+              <ul></ul>
+              </li>
+            </ul>
+          </li>  
+          
+          {% if current_user.is_authenticated %}
+          {% if current_user.is_admin %}  
+          <li class="nav-item ml-3">
+            <a class="nav-link active" style="font-size: 11px;" href="{{ url_for('home.admin_dashboard') }}">Dashboard</a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" style="font-size: 11px;" href="{{ url_for('admin.list_categories') }}">Categories</a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" style="font-size: 11px;" href="{{ url_for('admin.list_products') }}">Products</a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" style="font-size: 11px;" href="{{ url_for('admin.list_orders') }}" >Orders</a>
+          </li>
+          {% else %}
+                  
+            <li class="nav-item ml-3">
+              <a class="nav-link" style="font-size: 11px;"  href="{{ url_for('users.cart') }}">Cart<span class="badge badge-light">{{ count }}</span></a>
+            </li>
+            {% endif %}
+            <li class="nav-item dropdown ml-3">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size: 11px;" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                      Hi, {{ current_user.firstname }}!</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: black;" href="{{ url_for('users.profile') }}">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: black;" href="{{ url_for('auth.logout') }}">Logout</a>
+                  </div>
+                </li>
+              {% else %}  
+              <li class="nav-item active ml-3">
+                
+                  </li>
+                  
+                  <li class="nav-item ml-3">
+                
+                  </li>
+                  <li class="nav-item ml-3">
+                    <a class="nav-link" style="font-size: 11px;"  href="{{ url_for('auth.register') }}">Register</a>
+                  </li>
+                  <li class="nav-item ml-3">
+                      <a class="nav-link" style="font-size: 11px;" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    
+                  {% endif %}
+
+  </ul>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+            
+              <!-- banner -->
+              <div class="banner">
+                  <div class="xf">
+                                <div class="bd-example" >
+                                        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                    <div class="carousel-item active" style="min-height:480px;">
+                                                            <img src="{{url_for('static',filename='test.png')}}" class="d-block carousel-img-height" alt="...">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                            <h5>Featured Products</h5>
+                                                            <p>
+                                                                <a href="{{url_for('home.homepage')}}"> 
+                                                                Checkout our hottest products. </a> 
+                                                            </p>
+                                                            </div>
+                                                        </div>
+                                            
+                                            {% for i in products %}    
+                                            {% if i.id in sorter %}
+                                                <div class="carousel-item" style="min-height:480px;">
+                                                    <a href="{{url_for('home.product_details',product_name = i.product_name)}}">
+                                                        <img src="{{i.product_image}}" class="d-block  carousel-img-height" alt="...">
+                                                        <div class="carousel-caption d-none d-md-block">
+                                                        <h5>Featured Products</h5>
+                                                        <p>{{i.product_name}}</p>
+                                                        </div>
+                                                     </a>
+                                                </div>
+                                                {%endif%}
+                                            {%endfor %}
+                                            
+                                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                        </div>
+                            </div>  
+                  </div>  
+            
+</body>     
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/countrypicker.js') }}"></script>
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/purecounter/purecounter.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  
+   <!-- Template Main JS File -->  
+   <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+</html>
